@@ -28,9 +28,9 @@ db.createCollection("users")
 
 , я создал базу данный **mflix**, и в ней создал коллекции: **comments**, **movies**, **sessions**, **theaters**, **users**. И из репозитория <https://github.com/neelabalan/mongodb-sample-dataset/tree/main/sample_mflix> я скачал данные.
 
-## 3 Этап
+### 3 Этап
 
-### Выборка (find)
+#### Выборка (find)
 
 ```js
 // Чтобы узнать сколько элементов я выполнил комманду
@@ -89,7 +89,7 @@ db.movies
 
 ![filter-or](img/filter-or-and.png)
 
-### Обновление
+#### Обновление
 
 ```js
 // Обновленно использую updateOne
@@ -111,7 +111,7 @@ db.users.updateMany(
 
 ![update-many](img/update-many.png)
 
-### Удаление
+#### Удаление
 
 ```js
 // Удаление используя deleteMany
