@@ -112,3 +112,17 @@ db.users.updateMany(
 ![update-many](img/update-many.png)
 
 ### Удаление
+
+```js
+// Удаление используя deleteMany
+db.movies.deleteMany({ year: { $lt: 1930 } });
+```
+
+![delete-many](img/delete-many.png)
+
+```js
+// Удаление используя deleteOne
+db.users.deleteOne({ name: { $regex: "^A" } });
+```
+
+![delete-one](img/delete-one.png)
