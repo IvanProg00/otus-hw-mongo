@@ -6,7 +6,7 @@
 
 ## Задание
 
-- [ ] Добавить индексы в свой проект, сравнить производительность запросов
+- [x] Добавить индексы в свой проект, сравнить производительность запросов
 
 ## Описание выполнения
 
@@ -18,7 +18,7 @@
 db.movies.explain("executionStats").find({year: {$gt: 1980}}, {year: 1})
 ```
 
-```json
+```plain
 {
   ...
   executionStats: {
@@ -54,7 +54,7 @@ db.movies.createIndex({year: 1})
 db.movies.explain("executionStats").find({year: {$gt: 1980}})
 ```
 
-```json
+```plain
 {
   ...
   executionStats: {
@@ -118,7 +118,7 @@ db.movies.explain("executionStats").find({year: {$gt: 1980}})
 db.movies.explain("executionStats").find({$and: [{year: {$gt: 1980}}, {year: {$lt: 1990}}]})
 ```
 
-```json
+```plain
 {
   ...
   executionStats: {
@@ -155,7 +155,7 @@ db.movies.explain("executionStats").find({$and: [{year: {$gt: 1980}}, {year: {$l
 db.movies.explain("executionStats").find({$and: [{year: {$gt: 1980}}, {year: {$lt: 1990}}]})
 ```
 
-```json
+```plain
 {
   ...
   executionStats: {
@@ -216,10 +216,12 @@ db.movies.explain("executionStats").find({$and: [{year: {$gt: 1980}}, {year: {$l
 Без индексов
 
 ```js
-db.movies.explain("executionStats").aggregate({$match: {$or: [{year: {$gt: 1980}}, {title: /eo/}]}})
+db.movies
+  .explain("executionStats")
+  .aggregate({$match: {$or: [{year: {$gt: 1980}}, {title: /eo/}]}})
 ```
 
-```json
+```plain
 {
   ...
   executionStats: {
@@ -265,10 +267,12 @@ db.movies.explain("executionStats").aggregate({$match: {$or: [{year: {$gt: 1980}
 С индексом
 
 ```js
-db.movies.explain("executionStats").aggregate({$match: {$or: [{year: {$gt: 1980}}, {title: /eo/}]}})
+db.movies
+  .explain("executionStats")
+  .aggregate({$match: {$or: [{year: {$gt: 1980}}, {title: /eo/}]}})
 ```
 
-```json
+```plain
 {
   ...
   executionStats: {
@@ -386,10 +390,12 @@ db.movies.explain("executionStats").aggregate({$match: {$or: [{year: {$gt: 1980}
 Без индексов
 
 ```js
-db.movies.explain("executionStats").aggregate({$match: {$and: [{year: {$gt: 1980}}, {title: /eo/}]}})
+db.movies
+  .explain("executionStats")
+  .aggregate({$match: {$and: [{year: {$gt: 1980}}, {title: /eo/}]}})
 ```
 
-```json
+```plain
 {
   ...
   executionStats: {
@@ -423,10 +429,12 @@ db.movies.explain("executionStats").aggregate({$match: {$and: [{year: {$gt: 1980
 С индексом
 
 ```js
-db.movies.explain("executionStats").aggregate({$match: {$and: [{year: {$gt: 1980}}, {title: /eo/}]}})
+db.movies
+  .explain("executionStats")
+  .aggregate({$match: {$and: [{year: {$gt: 1980}}, {title: /eo/}]}})
 ```
 
-```json
+```plain
 {
   ...
   executionStats: {
